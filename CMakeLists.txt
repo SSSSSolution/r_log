@@ -28,13 +28,13 @@ target_link_libraries(rlog_test r_log)
 
 
 # install
-set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/install)
+#set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/install)
 install(TARGETS r_log
         EXPORT r_logTargets
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
         RUNTIME DESTINATION bin
-        INCLUDES DESTINATION include
+        PUBLIC_HEADER DESTINATION include/${PROJECT_NAME}
 )
 
 include(CMakePackageConfigHelpers)
@@ -53,7 +53,7 @@ install(EXPORT r_logTargets
 configure_file(cmake/r_logConfig.cmake.in r_logConfig.cmake @ONLY)
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/r_logConfig.cmake"
               "${CMAKE_CURRENT_BINARY_DIR}/r_logConfigVersion.cmake"
-        DESTINATION lib/cmake/MyLib
+              DESTINATION lib/cmake/r_log
 )
 
 
